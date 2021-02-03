@@ -21,7 +21,7 @@ let CRUDapp = new function() {
 
   this.el = document.getElementById('contatos'); // Variável Elemento Global
 
-  this.Count = function(data) {
+  this.count = function(data) {
       let el = document.getElementById('counter'); // Variável Elemento de Escopo Local
       let name = 'Contatos'; // Variável dentro da função a ser renomeada caso haja contatos
 
@@ -35,7 +35,7 @@ let CRUDapp = new function() {
       }
 };
 
-  this.FetchAll = function() {
+  this.fetchAll = function() {
       let data = ''; // Inicializar Variável de Escopo Local
 
       if (this.contatos.length > 0) { // Recupera Variável de Contatos Global e faz um loop nos Objetos da Matriz
@@ -51,11 +51,11 @@ let CRUDapp = new function() {
 
         // for (const prop in data)
       }
-        this.Count(this.contatos.length); // Executa o contador
+        this.count(this.contatos.length); // Executa o contador
         return this.el.innerHTML = data; // Retorna o input dos dados do laço For() no Elemento Global 'el'
     };
 
-    this.Add = function () {
+    this.add = function () {
         el1 = document.getElementById('add-nome');
         el2 = document.getElementById('add-telefone');
         el3 = document.getElementById('add-email');
@@ -74,13 +74,13 @@ let CRUDapp = new function() {
           el3.value = '';
           // Mostra a nova lista
           console.log('Inserçao com sucesso'); // Confirma no console --> *** Retirar depois ****
-          this.FetchAll();
+          this.fetchAll();
         } else {
           alert("Todos os campos devem ser preenchidos");
         }
       };
 
-      this.Edit = function (item) {
+      this.edit = function (item) {
         let el1 = document.getElementById('edit-name');
         let el2 = document.getElementById('edit-telefone');
         let el3 = document.getElementById('edit-email');
@@ -127,11 +127,11 @@ let CRUDapp = new function() {
         }
       };
 
-      this.Delete = function (item) {
+      this.delete = function (item) {
         // Deleta a linha escolhida
         this.contatos.splice(item, 1);
         // Mostra a nova lista
-        this.FetchAll();
+        this.fetchAll();
       };
 
 }
