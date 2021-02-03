@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda Pessoal</title>
+  <style>
+    input[type='submit'], button, [aria-label]{
+      cursor: pointer;
+    }
+    #spoiler{
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+<a>Agenda Pessoal</a>
+<div class="form_adicionar">
+    <form method="POST" onsubmit="CRUDapp.Add(); return false;">
+        <div>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="add-nome">
+        </div>
+        <div>
+            <label for="telefone">Telefone</label>
+            <input type="text" name="telefone" id="add-telefone">
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="add-email">
+        </div>
+        <div>
+        <button class="bt-salvar">Salvar</button>
+        </div>
+    </form>
+</div>
+<div id="spoiler" role="aria-hidden">
+    <form action="javascript:void(0);" method="POST" id="saveEdit">
+      <input type="text" id="edit-name">
+      <input type="text" id="edit-telefone">
+      <input type="text" id="edit-email">
+      <input type="submit" value="Edit" /> <a onclick="CloseInput()" aria-label="Close">&#10006;</a>
+    </form>
+</div>
+<div>
+    <form class="buscar"
+    onsubmit="getAgent(this).see('Agenda', this); return false;">
+        <p>
+        <a>BUSCA:</a>
+        </p>
+        <input name="info">
+        <select name="type">
+            <option value="nome">Nome</option>
+            <option value="telefone">Telefone</option>
+            <option value="email">Email</option>
+        </select>
+        <button onClick="getAgent(this).see('listar', this); return false;">OK</button>
+    </form>
+
+    <div>
+      <p id="counter"></p>
+      <table>
+        <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>Email</th>
+        </tr>
+        </thead>
+         <tbody id="contatos">
+         </tbody>
+      </table>
+    </div>
+</div>
+<script src="CRUDapp.js"></script>
+</body>
+</html>
